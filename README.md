@@ -5,23 +5,28 @@ Public-analysis node of the FIDNT audit platform (audit.fidnt.com), published fo
 
 ## Current analysis
 
-**[The commitment-fee trap: what the House did to foreign-assisted projects in HB 10858, and where the law leaves the door open](https://techfiduciary.github.io/fidnt-audit/)**
+**[The FY 2027 General Appropriations Bill: An Audit Against Article I](https://techfiduciary.github.io/fidnt-audit/)**
 
-- Validates the coalition's first-pass findings on the House bill vs the 2027 NEP
-  (₱87.2B local insertions, ₱73.0B foreign-assisted cuts, 6,033 added projects, 17 double-funded lines).
-- Explains the mechanics that turn a congressional "cut" into a taxpayer liability:
-  principal and interest stay automatically appropriated, commitment fees keep accruing
-  on undisbursed balances, and without a GAA line item the loan proceeds cannot be
-  released even though they sit in the Treasury as trust receipts.
-- Six legal openings (the leverage brief): circular-fixable release blockage, commitment-fee
-  disclosure, loan cancellation vs zombie fees, the immunity-waiver boundary, the missing
-  ICC-recoordination duty, and availability-period expiry disclosure.
-- Six questions for the Senate finance committee.
+FIDNT's assessment of HB 10858, in the editorial format of a full budget assessment —
+with the audit run against Article I of the 1987 Constitution rather than against process alone:
 
-**Status: first pass, not a conclusion.** Built on the coalition's DPWH first-pass dataset
-(Steven Lava, 10 Oct 2026), AJ Montesa's FY 2027 House GAB assessment, the coalition
-discussion thread, and the DOF financing-agreements library. Items pending primary-source
-confirmation are marked `[VERIFY]` in the page.
+- **What the House changed**: the ₱7.2T envelope (+₱407B over 2026); DPWH's portfolio swap
+  (+₱87.2B local / −₱73.0B foreign-assisted / net +₱11.5B); 6,033 insertions (₱165.6B);
+  1,160 dropped NEP projects (₱68.4B); 17 double-funded lines (₱3.1B).
+- **The authorization chain behind every peso**: the timeline from the 1565 Treaty of Cebu
+  to the 1764 Fee Simple Title (OCT 01-4), the 1935/1973/1987 charter layers, and the 2009
+  Court of Appeals decision (CA-G.R. SP 70014) that voided the root credentials the whole
+  budget executes on.
+- **The risk audit**: 111 systems of authority, zero sealed root titles (0/111 on the
+  audit node's verification gauge); the House insertions read as dispositions of national
+  patrimony executed on voided root access.
+- **Red flags, remedy, and six questions for the Senate** — provenance filings, disclosure
+  as the condition of release, the unpriced cost of the foreign-assisted cuts.
+
+**Status: first pass, not a conclusion.** DPWH numbers are the coalition's first-pass dataset
+(Steven Lava, 10 Oct 2026) and tie to the printed bill; FIDNT's advisory is a published legal
+position, attributed and open to challenge. Items pending primary-source confirmation are
+marked `[VERIFY]` in the page.
 
 ## Sources
 
