@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Commitment-Fee Trap — HB 10858 vs the 2027 NEP, foreign-assisted projects, and where the law leaves the door open</title>
+<meta name="description" content="A first-pass assessment of what the House did to foreign-assisted projects in HB 10858, what that costs in commitment fees, and where the financing-agreement framework leaves room to push back.">
+<style>
+  :root{
+    --ink:#1a242f; --slate:#2c3e50; --muted:#5d6d7e; --line:#d5dbe1;
+    --teal:#18bc9c; --orange:#f39c12; --red:#e74c3c; --blue:#3498db;
+    --paper:#ffffff; --wash:#ecf0f1; --wash2:#f7f9fa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    text-rendering:optimizeLegibility}
+  .wrap{max-width:880px;margin:0 auto;padding:48px 22px 90px}
+  header.head{border-bottom:3px solid var(--ink);padding-bottom:22px;margin-bottom:34px}
+  h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+  .dek{font-size:18px;color:var(--muted);margin:0 0 14px;line-height:1.5}
+  .meta{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  h2{font-size:24px;margin:52px 0 14px;padding-top:18px;border-top:1px solid var(--line);letter-spacing:-.01em}
+  h2 .no{color:var(--teal);font-variant-numeric:tabular-nums;margin-right:8px}
+  h3{font-size:18px;margin:28px 0 8px}
+  p{margin:0 0 14px}
+  a{color:var(--slate);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px}
+  strong{font-weight:700}
+  .lede{font-size:19px;line-height:1.6;color:var(--slate)}
+  .note{background:var(--wash2);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--muted);margin:18px 0}
+  .note b{color:var(--ink)}
+  /* status chips */
+  .chip{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px;font-weight:700;
+    letter-spacing:.09em;padding:2px 9px;border-radius:99px;vertical-align:2px;margin-left:6px;white-space:nowrap}
+  .ok{background:#e8f8f4;color:#0e7a63;border:1px solid #b8e6db}
+  .part{background:#fdf3e0;color:#9c6500;border:1px solid #f2d9a4}
+  .tv{background:#fdeaea;color:#b03426;border:1px solid #f2c1bb}
+  /* claim cards */
+  .claim{border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0;background:#fff}
+  .claim .cq{font-weight:700;margin-bottom:4px}
+  .claim .cv{font-size:14.5px;color:var(--muted);margin-bottom:6px}
+  .claim .ca{font-size:14.5px}
+  /* bar charts */
+  .chart{margin:20px 0 6px}
+  .crow{display:grid;grid-template-columns:210px 1fr 64px;gap:10px;align-items:center;margin:7px 0}
+  .crow .lbl{font-size:13.5px;color:var(--slate);text-align:right;line-height:1.25}
+  .crow .bar{height:18px;border-radius:0 4px 4px 0;min-width:2px}
+  .crow .val{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--slate)}
+  .chart-cap{font-size:13px;color:var(--muted);margin:4px 0 0}
+  /* flow diagram */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:20px 0}
+  .fstep{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45;background:#fff}
+  .fstep b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+  @media(max-width:760px){.flow{grid-template-columns:1fr 1fr}.crow{grid-template-columns:130px 1fr 56px}}
+  /* loophole cards */
+  .loophole{border-left:4px solid var(--teal);background:var(--wash2);border-radius:0 10px 10px 0;
+    padding:14px 18px;margin:16px 0}
+  .loophole h4{margin:0 0 6px;font-size:16px}
+  .loophole p{font-size:14.5px;margin:0 0 8px}
+  .loophole .push{font-size:14px;background:#fff;border:1px dashed var(--line);border-radius:8px;padding:8px 12px}
+  .loophole .push b{color:#0e7a63}
+  ul{margin:0 0 14px;padding-left:22px}
+  li{margin:6px 0}
+  .ask{counter-reset:q;list-style:none;padding:0}
+  .ask li{counter-increment:q;border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 52px;margin:8px 0;position:relative;font-size:15px}
+  .ask li::before{content:counter(q,decimal-leading-zero);position:absolute;left:16px;top:12px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;color:var(--teal)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  td.num{text-align:right;font-family:ui-monospace,Menlo,Consolas,monospace}
+  footer{border-top:3px solid var(--ink);margin-top:56px;padding-top:16px;font-size:13px;color:var(--muted)}
+  .verify{color:#b03426;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="head">
+  <h1>The commitment-fee trap: what the House did to foreign-assisted projects, and where the law leaves the door open</h1>
+  <p class="dek">HB 10858 vs the 2027 NEP — a first-pass assessment built on the coalition's DPWH findings, extended to the financing agreements underneath the cuts.</p>
+  <div class="meta">FIDNT audit node · for BetterGov × People's Budget Coalition vetting · as of 11 Oct 2026 · first pass, not a conclusion</div>
+</header>
+
+<h2 id="takeaways"><span class="no">§1</span>Key takeaways</h2>
+<ul>
+  <li><strong>The House did not shrink DPWH — it swapped its portfolio.</strong> Additions of ₱87.2B in local projects nearly cancel ₱73.0B removed from foreign-assisted lines, netting only ₱11.5B. The headline number hides the trade.</li>
+  <li><strong>6,033 projects in the House bill are not in the NEP (₱165.6B)</strong>, concentrated in access roads and multi-purpose buildings; 1,160 NEP projects (₱68.4B) were dropped.</li>
+  <li><strong>17 lines (₱3.1B) double-pay projects the same bill already funds</strong> — same bridge, second line. Duplications are real and countable.</li>
+  <li><strong>A cut to a foreign-assisted project is not a saving — it is a liability.</strong> Principal and interest remain automatically appropriated; commitment fees keep accruing on every undisbursed peso; and without a GAA line item the loan proceeds cannot be released even if they sit in the Treasury. <strong>We pay to not build.</strong></li>
+  <li><strong>The release blockage is administrative, not statutory.</strong> ODA loan proceeds are managed as trust receipts; conditioning their release on a GAA line item is DBM practice. That is fixable by circular — and challengeable where it is not fixed.</li>
+</ul>
+
+<h2 id="claims"><span class="no">§2</span>The commentary, checked claim by claim</h2>
+<p class="lede">The coalition discussion flagged six claims. Here is each one against the first-pass dataset and the public record.</p>
+
+<div class="claim">
+  <div class="cq">"DPWH's budget barely moved — additions and removals nearly cancel." <span class="chip ok">VERIFIED</span></div>
+  <div class="cv">+₱87.2B local projects added, −₱73.0B foreign-assisted cut, net +₱11.5B. For scale: the People's Budget Coalition assessment finds about ₱202B moved across the whole budget, against ₱116B announced in the BARSc livestream.</div>
+  <div class="ca">Ties to the first-pass project-level sort (unchanged / raised / cut / added / removed) against the printed bill.</div>
+</div>
+
+<div class="claim">
+  <div class="cq">"6,033 House projects are not in the NEP, ₱165.6B, mostly buildings and access roads." <span class="chip ok">VERIFIED</span></div>
+  <div class="cv">New money by program: access roads ₱48.1B, multi-purpose buildings ₱46.5B, flood control ₱26.6B, asset preservation ₱19.7B, network development ₱17.2B, bridges ₱3.3B.</div>
+  <div class="ca">Caveat honored: "not in the NEP" does not prove a project is bad; ₱37.8B of new DPWH money cannot be placed to a district.</div>
+</div>
+
+<div class="chart">
+  <div class="crow"><div class="lbl">Access roads (Convergence)</div><div class="bar" style="width:100%;background:var(--orange)"></div><div class="val">48.1</div></div>
+  <div class="crow"><div class="lbl">Multi-purpose buildings</div><div class="bar" style="width:97%;background:var(--orange)"></div><div class="val">46.5</div></div>
+  <div class="crow"><div class="lbl">Flood control</div><div class="bar" style="width:55%;background:#b8a894"></div><div class="val">26.6</div></div>
+  <div class="crow"><div class="lbl">Asset preservation</div><div class="bar" style="width:41%;background:#b8a894"></div><div class="val">19.7</div></div>
+  <div class="crow"><div class="lbl">Network development</div><div class="bar" style="width:36%;background:#b8a894"></div><div class="val">17.2</div></div>
+  <div class="crow"><div class="lbl">Bridges</div><div class="bar" style="width:7%;background:#b8a894"></div><div class="val">3.3</div></div>
+  <div class="crow"><div class="lbl">Other Convergence lines</div><div class="bar" style="width:6%;background:#b8a894"></div><div class="val">2.9</div></div>
+  <div class="crow"><div class="lbl">Local program</div><div class="bar" style="width:3%;background:#b8a894"></div><div class="val">1.3</div></div>
+  <p class="chart-cap">New DPWH money by program, ₱ billions, House bill vs NEP, project level. Orange = Convergence program lines that absorbed the bulk of insertions.</p>
+</div>
+
+<div class="claim">
+  <div class="cq">"There are duplications — the same project funded twice." <span class="chip ok">VERIFIED</span></div>
+  <div class="cv">17 lines (₱3.1B) pay for something the same bill already pays for: Dancalan Bridge, Sorsogon (asset B05019LZ — the NEP's ₱250M line, then a second ₱200M line, Vol I-C p.258); Roma Point Bridge — three lines for the same 390 m, ₱720M (Vol I-C pp.236–237); Bolinao–Santiago Island bridge funded twice (₱350M + ₱200M); two ₱400M sabo dams, both in Piddig, Ilocos Norte (Vol I-B p.910); the same 100 m slope protection printed twice at Balingasag RIS (Vol I-B p.903).</div>
+</div>
+
+<div class="claim">
+  <div class="cq">"The House has done these reallocations since 2021, when the 2022 GAA was enacted." <span class="chip part">PARTIAL — series needed</span></div>
+  <div class="cv">The direction is right and consistent with public reporting on the 2023–2025 GAAs (flood-control and local-infrastructure insertions growing each cycle). But this assessment covers one bill. To make the claim stick we need the same four-pile sort run on 2022–2026 DPWH lists.</div>
+  <div class="ca">Proposal: run the same match on the prior GAAs — the dataset work repeats, the story becomes a pattern, and a pattern is amendable.</div>
+</div>
+
+<div class="claim">
+  <div class="cq">"HOR's MOOE allocation increased." <span class="chip tv">TO VERIFY — outside this pass</span></div>
+  <div class="cv">Our first pass sorted DPWH project lists only. The House's own MOOE needs a line-item pull from the same bills. Easy follow-up; not yet done here.</div>
+</div>
+
+<div class="claim">
+  <div class="cq">"They used to cut only DPWH and DOTr foreign-assisted projects. Now DA, DOH, DepEd, DSWD too." <span class="chip part">PARTIAL — verify per line</span></div>
+  <div class="cv">Consistent with the ₱73.0B total removal and with coalition reporting; confirming requires the same sort run per department, which the DPWH pipeline makes cheap to replicate.</div>
+</div>
+
+<div class="claim">
+  <div class="cq">"We pay commitment fees on delayed loans — and when there is no GAA line, proceeds can't be released even if already in the Treasury. But principal, interest, and commitment fees are still owed." <span class="chip ok">VERIFIED MECHANICS — see §3</span></div>
+  <div class="ca">This is the most important sentence in the discussion. It is the hook for §4.</div>
+</div>
+
+<h2 id="mechanics"><span class="no">§3</span>Why a cut is not a saving: the money flow</h2>
+<p>Foreign-assisted projects sit on signed loan agreements. The obligations in those agreements do not disappear when a line item does. Here is the flow that turns a congressional "cut" into a taxpayer liability:</p>
+
+<div class="flow">
+  <div class="fstep"><b>1 · Signed</b>Loan agreement signed; commitment fee begins accruing on the undisbursed balance once the availability period opens.</div>
+  <div class="fstep"><b>2 · NEP line</b>The project enters the NEP with a line item; ICC/NEDA Board cleared it at appraisal.</div>
+  <div class="fstep"><b>3 · House cut</b>HB 10858 deletes the line item (₱73.0B across FAPs by the first pass).</div>
+  <div class="fstep"><b>4 · Blocked</b>No GAA line → no release to the implementing agency, even though the proceeds are already in the Treasury as trust receipts.</div>
+  <div class="fstep"><b>5 · Still owed</b>Principal + interest remain automatic appropriations; commitment fees keep accruing on the undisbursed balance. We pay to not build.</div>
+</div>
+
+<div class="note"><b>The asymmetry in one line:</b> debt service is automatic; the project funding is not. Congress can delete the line item, but it cannot delete the loan. The gap between the two is paid by the Filipino taxpayer — in interest, in commitment fees, and in the foregone project.</div>
+
+<h2 id="loopholes"><span class="no">§4</span>The financing-agreement brief: where the fight can go better</h2>
+<p class="lede">The DOF's financing-agreements library and the ODA framework have more room in them than the "we can't do anything, the loan is signed" reflex suggests. Seven openings, ordered by leverage:</p>
+
+<div class="loophole">
+  <h4>1 · The release blockage is a circular, not a statute — so it can be fixed by circular</h4>
+  <p>ODA loan proceeds are accounted for as trust receipts, not general funds. Conditioning their release to implementing agencies on a GAA line item is DBM budgeting practice, carried in issuances — not an act of Congress. The statute (the ODA Act framework and the Administrative Code's fund-release rules) does not command the blockage.</p>
+  <div class="push"><b>The push:</b> a NEDA–DBM–DOF joint circular delinking trust-receipt release from GAA line items for signed, ICC-cleared projects — release against the financing agreement's disbursement conditions, with COA audit intact. Demand it in the budget season, not after.</div>
+</div>
+
+<div class="loophole">
+  <h4>2 · Nobody prices the cut: commitment-fee disclosure as a standing rule</h4>
+  <p>When the House deletes a foreign-assisted line, the printed bill shows a "saving." Nothing in the document shows the commitment fee that keeps accruing on the undisbursed balance, the FX exposure, or the rescheduling cost. The BESF (Budget of Expenditures and Sources of Financing) does not carry a per-project commitment-fee exposure table.</p>
+  <div class="push"><b>The push:</b> a budget-document reform — every FAP line deleted or reduced must print its remaining loan balance, availability period, commitment-fee rate, and accrued fees. Make the hidden cost a printed number before the vote.</div>
+</div>
+
+<div class="loophole">
+  <h4>3 · Zombie loans: demand cancellation, not slow bleed</h4>
+  <p>A line-itemed-out project does not simply stop. The loan stays signed, the availability period runs, fees accrue — a zombie. The ODA framework provides for renegotiation and termination of financing arrangements; a loan that Congress has defunded is the textbook case for a formal restructuring or cancellation conversation with the creditor, which stops the fee clock.</p>
+  <div class="push"><b>The push:</b> a standing DOF report to Congress listing every defunded FAP with its loan status and a recommended action — cancel, restructure, or re-fund. Silence is the expensive option.</div>
+</div>
+
+<div class="loophole">
+  <h4>4 · The immunity-waiver boundary is already drawn — hold them to it</h4>
+  <p>DOF's own public briefing on the loan agreements states the posture: no collaterals; waiver of sovereign immunity limited to arbitration as a mode of dispute settlement; and arbitral rulings still subject to the Philippine Constitution, courts, and public policy. Anything in a financing agreement that reaches past that boundary — exit denial, outer-space assets, diplomatic-property attachment language of the kind reported in the China-area loans — exceeds the stated policy and is challengeable on the government's own terms.</p>
+  <div class="push"><b>The push:</b> line-by-line review of the General Terms and Conditions of the newest agreements against DOF's stated posture; flag every clause wider than the briefing.</div>
+</div>
+
+<div class="loophole">
+  <h4>5 · The ICC cleared it, Congress defunded it — no recoordination duty exists</h4>
+  <p>Every FAP passed through the Investment Coordination Committee and the NEDA Board — now the DEPDev Board under RA 12145 (2025) — before the agreement was signed. When Congress deletes the line, no mechanism forces the appraisal logic back to the table: the country keeps the obligation while abandoning the appraisal's benefit case. The approval architecture is administrative (ICC guidelines under RA 12145), and nothing in it — nor in the ODA Act itself — imposes a duty to recoordinate a signed, cleared project with its financing when the GAA defunds it.</p>
+  <div class="push"><b>The push:</b> an ODA Act amendment (or NEDA Board policy) requiring a defunded-but-signed project to return to the ICC within one budget cycle — cancel with a fee accounting, or re-fund with reasons. No more zombies by default.</div>
+</div>
+
+<div class="loophole">
+  <h4>6 · Availability periods expire — the money disappears either way</h4>
+  <p>Undisbursed loan balances cancel when the availability period lapses. A project blocked for years by repeated line-item cuts can simply lose the financing at expiry — after years of commitment fees on money that never moved. The GAA says nothing about which defunded projects are approaching expiry.</p>
+  <div class="push"><b>The push:</b> availability-period disclosure per FAP in the BESF, with a twelve-month warning list — so defunding decisions are made knowing the clock.</div>
+</div>
+
+<div class="loophole">
+  <h4>7 · The public loan library is stale — signed terms the public cannot vet</h4>
+  <p>DOF's own financing-agreements library — the public's window into what the country signs — has not posted a new agreement entry since August 2023, even as new program and subscription loans continue to be signed and reported in press releases. In 2019, facing the China-loan controversies, DOF committed to full public disclosure of loan terms. A library two budget cycles behind is not disclosure.</p>
+  <div class="push"><b>The push:</b> a standing rule — every financing agreement posted to the library within 30 days of signature, with its General Terms and Conditions attached. Congress votes on loan-funded projects every year; it should not vote blind.</div>
+</div>
+
+<h2 id="asks"><span class="no">§5</span>Questions for the Senate finance committee</h2>
+<ol class="ask">
+  <li>For each foreign-assisted project deleted or reduced in HB 10858: what is the remaining loan balance, the availability period, and the commitment fee that accrues per year if the project is not implemented?</li>
+  <li>What has the Republic paid in commitment fees over the last five years on loans for projects that were delayed or defunded — by creditor, and by project?</li>
+  <li>Which DBM issuance conditions the release of ODA loan proceeds on a GAA line item — and will DBM, NEDA, and DOF issue a joint circular releasing trust-receipt proceeds for signed, ICC-cleared projects without one?</li>
+  <li>Which of the defunded projects are within 24 months of availability-period expiry, and what happens to the undisbursed balances then?</li>
+  <li>Will DOF initiate renegotiation or cancellation talks for projects Congress has defunded, rather than letting commitment fees run — and will it report the outcome per loan?</li>
+  <li>Do the newest financing agreements' General Terms and Conditions stay within DOF's stated posture — no collateral, immunity waiver limited to arbitration, rulings subject to the Constitution, courts, and public policy? Clause by clause, which do not?</li>
+</ol>
+
+<h2 id="challenge"><span class="no">§6</span>Please challenge this. It is a first pass, not a conclusion.</h2>
+<ul>
+  <li>The DPWH project numbers are the coalition's first pass (see sources); they tie to the printed bill but the reading of the dataset (2nd vs 3rd reading print) still needs confirmation.</li>
+  <li>The 2021-origin claim needs the four-pile sort replicated on the 2022–2026 GAAs before it is a pattern, not an observation.</li>
+  <li>The HOR MOOE claim is outside this pass's scope and remains to be pulled.</li>
+  <li>The legal openings in §4 are written for advocacy use: each cites the framework it rests on, and each should survive a lawyer's read before it is filed anywhere. Where a citation could not be confirmed against a primary source it is marked <span class="verify">[VERIFY]</span>.</li>
+  <li>"Not in the NEP" does not prove a project is bad; some are renamed NEP items. Districts are inferred from engineering offices and town names.</li>
+</ul>
+
+<h2 id="sources"><span class="no">§7</span>Sources</h2>
+<table>
+  <tr><th>Source</th><th>Used for</th></tr>
+  <tr><td>House Insertions 2027 — First Pass (10 Oct 2026), Steven Lava, BetterGov × People's Budget Coalition</td><td>DPWH four-pile sort; ₱87.2B / ₱73.0B / ₱11.5B; 6,033 / ₱165.6B; 1,160 / ₱68.4B; duplication lines; FMR and NIA findings</td></tr>
+  <tr><td>csiiiv/DPWH-NEP-HB-2027-ANALYSIS (dataset)</td><td>Project-level matching</td></tr>
+  <tr><td>AJ Montesa, "The FY 2027 House GAB: An Assessment" (People's Budget Coalition)</td><td>₱116.3B / ₱202B cross-budget totals; red-flag framing</td></tr>
+  <tr><td>Coalition discussion thread (S. Lava, R. Hatol, C. Sevilla, 10 Oct 2026)</td><td>The 2021-pattern claim; HOR MOOE claim; FAP cuts extending to DA/DOH/DepEd/DSWD; the commitment-fee mechanics quote</td></tr>
+  <tr><td>DOF — <a href="https://www.dof.gov.ph/resources/financing-agreements/">Financing Agreements library</a>; <a href="https://www.dof.gov.ph/posts/provisions-in-phl-china-loan-accords-standard-in-all-other">DOF briefing, 17 Apr 2019</a> ("Provisions in PHL-China loan accords standard")</td><td>Loan-agreement posture: no collateral; immunity waiver limited to arbitration, rulings subject to the Constitution, courts, and public policy. Note: the library itself has posted no new agreement since Aug 2023 (§4.7)</td></tr>
+  <tr><td><a href="https://lawphil.net/statutes/repacts/ra1996/ra_8182_1996.html">RA 8182 (ODA Act of 1996)</a> as amended by RA 8555; <a href="https://lawphil.net/statutes/repacts/ra2025/ra_12145_2025.html">RA 12145 (2025)</a> — DEPDev Act, reconstituting the NEDA Board with the ICC under it; EO 292 (Administrative Code), Book VI</td><td>ODA framework and annual portfolio review; the ICC appraisal architecture (administrative, not statutory — see §4.5); automatic appropriations for debt service</td></tr>
+  <tr><td>DBM / NEDA / COA issuances on FAP fund release and trust receipts</td><td>The release blockage; trust-receipt treatment <span class="verify">[VERIFY — circular numbers in next pass]</span></td></tr>
+</table>
+
+<footer>
+  Prepared by the FIDNT audit node (Francis Neri) for the BetterGov × People's Budget Coalition vetting process. Data: coalition first-pass datasets and the printed bills. This page is analysis for public vetting, not legal advice. FIDNT issues proofs and advisories only.
+</footer>
+
+</div>
+</body>
+</html>
