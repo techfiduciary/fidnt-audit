@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEP-HB2027 — FIDNT verification contribution: DPWH in HB 10858 vs the 2027 NEP</title>
+<meta name="description" content="A standard contribution to the FY 2027 budget-review commons: FIDNT's verification pass on DPWH in HB 10858 vs the 2027 NEP, following the coalition dataset's stage, units, and caveats discipline.">
+<style>
+  :root{
+    --ink:#1a242f; --slate:#2c3e50; --muted:#5d6d7e; --line:#d5dbe1;
+    --teal:#18bc9c; --orange:#f39c12; --red:#e74c3c;
+    --paper:#fff; --wash:#ecf0f1; --wash2:#f7f9fa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:880px;margin:0 auto;padding:48px 22px 90px}
+  header.head{border-bottom:3px solid var(--ink);padding-bottom:22px;margin-bottom:30px}
+  h1{font-size:32px;line-height:1.22;margin:0 0 10px;letter-spacing:-.02em}
+  .dek{font-size:18px;color:var(--muted);margin:0 0 12px;line-height:1.5}
+  .meta{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  h2{font-size:23px;margin:46px 0 12px;padding-top:18px;border-top:1px solid var(--line)}
+  h2 .no{color:var(--teal);margin-right:8px}
+  h3{font-size:17.5px;margin:24px 0 8px}
+  p{margin:0 0 14px}
+  a{color:var(--slate);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px}
+  .stage{background:var(--wash2);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;padding:13px 18px;margin:20px 0;font-size:14.5px}
+  .stage b{color:var(--ink)}
+  .note{background:var(--wash2);border:1px solid var(--line);border-radius:10px;padding:13px 18px;font-size:14px;color:var(--muted);margin:16px 0}
+  .note b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  td.num{text-align:right;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+  ul{margin:0 0 14px;padding-left:22px}li{margin:6px 0}
+  ol{margin:0 0 14px;padding-left:22px}
+  .crumbs{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;margin-bottom:22px}
+  .crumbs a{color:var(--muted)}
+  footer{border-top:3px solid var(--ink);margin-top:56px;padding-top:16px;font-size:13px;color:var(--muted)}
+  .ver{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--wash);border-radius:6px;padding:2px 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="head">
+  <h1>NEP-HB2027 — a verification contribution: DPWH in HB 10858 vs the 2027 NEP</h1>
+  <p class="dek">FIDNT's independent pass on the coalition's DPWH findings, published in the stage, units, and caveats discipline the FY 2027 budget-review datasets already use. A contribution to the commons — not a rival analysis.</p>
+  <div class="meta">FIDNT audit node · fidnt-audit/NEP-HB2027 · 11 Oct 2026 · provisional until stage reading is confirmed</div>
+</header>
+
+<p class="crumbs"><a href="../../">← fidnt-audit home</a> · assessment: <a href="../">An Audit Against Article I</a></p>
+
+<div class="stage">
+  <b>Stage and units — read first.</b> Stages compared: the <b>2027 NEP (as filed, = GAB_FILED)</b> against the <b>HB 10858 House bill project lists</b>. The first pass states its dataset reads as 2nd reading while the printed volumes show 3rd-reading footers; <b>that reading is unconfirmed and flagged, not resolved.</b> All figures are <b>₱ billions, project level</b>, as aggregated by the source passes; source documents print in thousands, and no conversion beyond the sources' own was applied. Scope: <b>DPWH project lists only</b> — no whole-budget, MOOE, or special-provision claims are made here.
+</div>
+
+<h2><span class="no">§1</span>Verified aggregates</h2>
+<table>
+  <tr><th>Finding</th><th class="num" style="text-align:right">Value</th><th>Basis</th></tr>
+  <tr><td>DPWH additions — local projects</td><td class="num">+₱87.2B</td><td>four-pile sort, project level</td></tr>
+  <tr><td>DPWH removals — foreign-assisted</td><td class="num">−₱73.0B</td><td>four-pile sort, project level</td></tr>
+  <tr><td>Net change, DPWH total</td><td class="num">+₱11.5B</td><td>sum of piles</td></tr>
+  <tr><td>House-bill projects not in the NEP</td><td class="num">6,033 · ₱165.6B</td><td>project match; mostly access roads + multi-purpose buildings</td></tr>
+  <tr><td>NEP projects dropped</td><td class="num">1,160 · ₱68.4B</td><td>project match</td></tr>
+  <tr><td>Lines paying for an object the bill already pays for</td><td class="num">17 · ₱3.1B</td><td>named-case review — see <a href="findings.csv">findings.csv</a></td></tr>
+  <tr><td>New farm-to-market roads</td><td class="num">353 · +₱5.92B</td><td><strong>no stated length on any line</strong> — cost per km unverifiable</td></tr>
+  <tr><td>NIA new lines (replacing 108 dropped)</td><td class="num">145 · +₱5.74B</td><td>pump-station repair ₱3.0B → ₱0.46B; no special provision binds NIA to the list</td></tr>
+  <tr><td>New DPWH money not placeable to a district</td><td class="num">₱37.8B</td><td>geo-attribution gap (districts inferred from offices/town names)</td></tr>
+  <tr><td>Flood control</td><td class="num">+₱26.6B new / −₱20.9B dropped</td><td>project match</td></tr>
+</table>
+<p class="note">For scale: the People's Budget Coalition assessment finds about <b>₱202B moved across the whole budget</b>, against ₱116B announced in the BARSc livestream. This contribution claims only the DPWH project-level rows above.</p>
+
+<h2><span class="no">§2</span>Named duplication cases (page-cited)</h2>
+<table>
+  <tr><th>Case</th><th>Detail</th><th>Print cite</th></tr>
+  <tr><td>Dancalan Bridge, Sorsogon (asset B05019LZ)</td><td>NEP line ₱250M, then a second ₱200M line for the same bridge</td><td>Vol I-C p.258</td></tr>
+  <tr><td>Roma Point Bridge</td><td>three lines for the same 390 m — ₱720M total</td><td>Vol I-C pp.236–237</td></tr>
+  <tr><td>Bolinao–Santiago Island bridge</td><td>funded twice — ₱350M + ₱200M</td><td>first-pass aggregate</td></tr>
+  <tr><td>Same building, three towns</td><td>second lines for the same building in Calamba, Liloan, La Trinidad</td><td>first-pass aggregate</td></tr>
+  <tr><td>Piddig sabo dams, Ilocos Norte</td><td>two new ₱400M sabo dams, both in Piddig</td><td>Vol I-B p.910</td></tr>
+  <tr><td>Balingasag RIS slope protection</td><td>the same 100 m protection printed twice — ₱50M each</td><td>Vol I-B p.903</td></tr>
+</table>
+<p class="note"><b>Screening lead, not a finding of wrongdoing.</b> Package/phase/lot/segment differences are ambiguous 50/50 signals and were not treated as scope identity. The machine-readable ledger with status per row is <a href="findings.csv">findings.csv</a> (CC BY 4.0).</p>
+
+<h2><span class="no">§3</span>Method (repeat it)</h2>
+<ol>
+  <li>Lay the two project lists side by side (NEP vs House bill).</li>
+  <li>Sort every project into four piles: unchanged / raised-or-cut / added by the House / removed by the House.</li>
+  <li>Sum each pile; reconcile against the printed bill totals.</li>
+  <li>Duplications: exact-amount and same-object review across the bill's own volumes.</li>
+  <li>Publish provisional results with named, page-cited cases; hold the rest at aggregate until tied to a printed line.</li>
+</ol>
+
+<h2><span class="no">§4</span>Caveats adopted from the commons' own discipline</h2>
+<ul>
+  <li>"Not in the NEP" does not prove a project is improper; some are renamed NEP items.</li>
+  <li>Candidate matches and deltas are provisional; unmatched rows are not proof of policy change.</li>
+  <li>The ₱37.8B unplaced money is the measure of the district-inference method's limit.</li>
+  <li>Flags and thresholds are starting points, not editorial standards.</li>
+  <li>Validate every lead against the original documents before filing anything anywhere.</li>
+</ul>
+
+<h2><span class="no">§5</span>Sources</h2>
+<ul>
+  <li><a href="https://github.com/kimileeee/gab-fy2027-dataset">kimileeee/gab-fy2027-dataset</a> <span class="ver">v0.1.0 · 2026-10-09</span> — stage taxonomy and table discipline; DATA_DICTIONARY.md</li>
+  <li><a href="https://github.com/csiiiv/DPWH-NEP-HB-2027-ANALYSIS">csiiiv/DPWH-NEP-HB-2027-ANALYSIS</a> — three-stage workbench; HB Vol. I-B/I-C; NEP Vol. II-B snapshot</li>
+  <li><a href="https://research.bettergov.ph/static/nep-preview/dpwh.html">BetterGov — DPWH FY2027 NEP Patterns</a> — 11,372 entries; 90%+ title-similarity screening</li>
+  <li><a href="https://github.com/bettergovph/open-data-visualization">bettergovph/open-data-visualization</a> — the visualization commons this contributes alongside</li>
+  <li><a href="https://ajamontesa.github.io/ph-budget-analysis/hgab-2027-assessment.html">AJ Montesa — The FY 2027 House GAB: An Assessment</a> — ₱116.3B / ₱202B context</li>
+  <li>House bill PDFs (Vol. I-B, I-C) and the NEP (CR 638) — print of record</li>
+</ul>
+
+<footer>
+  <strong>FIDNT audit node</strong> — <a href="https://audit.fidnt.com">audit.fidnt.com</a>. Contribution license: <strong>CC BY 4.0</strong> (attribute "FIDNT audit node — fidnt-audit/NEP-HB2027"). Upstream datasets remain under their respective terms; no upstream data file is republished here. FIDNT issues proofs and advisories only. Sibling page: <a href="../root-title/">An Audit Against Article I — the root-title record</a>.
+</footer>
+
+</div>
+</body>
+</html>

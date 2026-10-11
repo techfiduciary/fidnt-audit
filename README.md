@@ -28,6 +28,17 @@ with the audit run against Article I of the 1987 Constitution rather than agains
 position, attributed and open to challenge. Items pending primary-source confirmation are
 marked `[VERIFY]` in the page.
 
+## Also in this repository
+
+- **[NEP-HB2027/](NEP-HB2027/)** — the standards contribution: FIDNT's verification pass on DPWH
+  in HB 10858 vs the 2027 NEP, published in the coalition datasets' stage/units/caveats
+  discipline, with `findings.csv` (CC BY 4.0). Live: [techfiduciary.github.io/fidnt-audit/NEP-HB2027](https://techfiduciary.github.io/fidnt-audit/NEP-HB2027/)
+- **[root-title/](root-title/)** — the exclusive Article I National Territory record: what the
+  missing root foundation does to each branch — Executive (administration of contested
+  property), Legislative (statutes with a defective object), Judiciary (competent to examine
+  what it voided in part), Local Government (heirs of the defect). Live:
+  [techfiduciary.github.io/fidnt-audit/root-title](https://techfiduciary.github.io/fidnt-audit/root-title/)
+
 ## Sources
 
 - House Insertions 2027 — First Pass (S. Lava, BetterGov × People's Budget Coalition)
